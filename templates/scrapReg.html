@@ -1,0 +1,133 @@
+{% include 'public_header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Registration Form</title>
+    <style>
+        /* Basic styling */
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    background-image: url('https://cdn.pixabay.com/photo/2018/01/26/15/53/automotive-shredder-residue-3108985_1280.jpg'); /* Replace with your actual image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 20px;
+    }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #f6f6f6;
+        }
+
+        form {
+            background-color: #fff;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            font-weight: bold;
+            color: #55b4ef;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: #55b4ef;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #031927;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h2>Registration✍️</h2>
+        <form id="registrationForm" action="" method="post">
+            <table>
+                <tr>
+                    <th>First Name</th>
+                    <td><input type="text" id="fname" name="fname" placeholder="Enter your first name" required></td>
+                </tr>
+                <tr>
+                    <th>Last Name</th>
+                    <td><input type="text" id="lname" name="lname" placeholder="Enter your last name" required></td>
+                </tr>
+                <tr>
+                    <th>Place</th>
+                    <td><input type="text" id="place" name="place" placeholder="Enter your place" required ></td>
+                </tr>
+                <tr>
+                    <th>Post</th>
+                    <td><input type="text" id="post" name="post" placeholder="Enter your post" required></td>
+                </tr>
+                <tr>
+                    <th>Pin Code</th>
+                    <td><input type="text" id="pin" name="pin" placeholder="Enter your pin code" required></td>
+                </tr>
+                <tr>
+                    <th>Phone Number</th>
+                    <td><input type="text" id="phonenumber" name="phonenumber" placeholder="Enter your phone number" required></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><input type="text" id="email" name="email" placeholder="Enter your email" required ></td>
+                </tr>
+                <tr>
+                    <th>Licenses</th>
+                    <td><input type="text" id="licences" name="licences" placeholder="Enter licenses" required ></td>
+                </tr>
+                <tr>
+                    <th>Username</th>
+                    <td><input type="text" id="username" name="username" placeholder="Choose a username" required></td>
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <td><input type="password" id="password" name="password" placeholder="Create a password" required ></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <input type="submit" value="Register" name="submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </center>
+</body>
+</html>
+{% include 'footer.html' %}

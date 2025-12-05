@@ -1,0 +1,104 @@
+{% include 'scrap_header.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Forwarded ScrapRequest</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            background-image: url('https://cdn.pixabay.com/photo/2023/09/08/15/49/ai-generated-8241457_1280.jpg');  /* Replace with actual background image */
+
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        /* Header Styling */
+        h2 {
+            text-align: center;
+            color: #032f4a;
+            margin-bottom: 20px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #0c476c;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        /* Add some space below the table */
+        table {
+            margin-top: 20px;
+        }
+
+        /* Add padding to the body */
+        body {
+            padding: 40px 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2> Forwarded ScrapRequest</h2>
+    
+    <table>
+        <tr>
+            <th>Reg No</th>
+            <th>Model</th>
+            <th>Date</th>
+            <th>status</th>
+            <th>Reply</th>
+        </tr>
+        {% for i in data['view'] %}
+        <tr>
+           
+            <td>{{i['regno']}}</td>
+            <td>{{i['model']}}</td>
+            <td>{{i['date']}}</td>
+            <td>{{i['scraprequest_status']}}</td>
+            <td><a href="/update_status?id={{i['request_id']}}">update status</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% include 'footer.html' %}

@@ -1,0 +1,93 @@
+{% include 'user_header.html' %}
+
+<div class="certificate-container">
+    <div class="certificate-wrapper">
+        <h2 class="page-title">Your Certificates</h2>
+        <div class="certificates-grid">
+            {% for i in data['view'] %}
+            <div class="certificate-card">
+                <div class="pdf-container">
+                    <embed src="{{ i['certificate'] }}" type="application/pdf" width="100%" height="450px">
+                </div>
+                <!-- <div class="download-button">
+                    <a href="{{ i['certificate'] }}" download="certificate_{{ i['request_id'] }}.pdf">Download PDF</a>
+                </div> -->
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .certificate-container {
+        padding: 40px 20px;
+        background-color: #f8f9fa;
+    }
+    
+    .certificate-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .page-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+        font-size: 28px;
+    }
+    
+    .certificates-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 30px;
+    }
+    
+    .certificate-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+    
+    .certificate-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .pdf-container {
+        border-bottom: 1px solid #eee;
+    }
+    
+    .download-button {
+        padding: 15px;
+        text-align: center;
+    }
+    
+    .download-button a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4a6bdf;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: background-color 0.2s ease;
+    }
+    
+    .download-button a:hover {
+        background-color: #3a5bcd;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .certificates-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .pdf-container embed {
+            height: 400px;
+        }
+    }
+</style>
+
+{% include 'footer.html' %}

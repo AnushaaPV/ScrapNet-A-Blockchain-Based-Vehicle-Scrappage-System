@@ -1,0 +1,89 @@
+{% include 'police_header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url('https://cdn.pixabay.com/photo/2017/08/27/23/16/wreck-2687934_1280.jpg');  /* Replace with actual background image */
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #fff;
+            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            font-size: 18px;
+            color: #007BFF;
+            margin: 0;
+        }
+
+        .card p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .card span {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Station Information</h1>
+    <div class="container">
+        {% for i in data['view'] %}
+        <div class="card">
+            <h2>{{ i['station_name'] }}</h2>
+            <p><span>Place:</span> {{ i['place'] }}</p>
+            <p><span>Pincode:</span> {{ i['pin'] }}</p>
+            <p><span>Email:</span> {{ i['email'] }}</p>
+            <p><span>Phone Number:</span> {{ i['phone_number'] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+{% include 'footer.html' %}
+
+
+

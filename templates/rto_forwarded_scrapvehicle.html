@@ -1,0 +1,142 @@
+
+
+{% include 'RTO_header.html' %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Forwarded ScrapRequest</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            background-image: url('https://cdn.pixabay.com/photo/2019/11/06/07/06/auto-4605385_1280.jpg');
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Container for cards */
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #0d3e5c;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Card layout */
+        .card {
+            background: rgb(153, 151, 151);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            color: #112154;
+        }
+
+        .card p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        /* Button styles */
+        .button-group {
+            margin-top: 10px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+
+        .approve {
+            background-color: #28a745;
+        }
+
+        .reject {
+            background-color: #dc3545;
+        }
+
+        .create-certificate {
+            background-color: #ccd3db;
+        }
+
+        .upload-certificate {
+            background-color: #042051;
+            color: rgb(250, 232, 232);
+        }
+
+        /* Status styles */
+        .approved {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .rejected {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Forwarded ScrapRequest</h2>
+        
+        {% for i in data['view'] %}
+        <div class="card">
+            <h3>{{ i['model'] }} ({{ i['regno'] }})</h3>
+            <p><strong>First Name:</strong> {{ i['f_name'] }}</p>
+            <p><strong>Last Name:</strong> {{ i['l_name'] }}</p>
+            <p><strong>Registration No:</strong> {{ i['regno'] }}</p>
+            <p><strong>Date:</strong> {{ i['date'] }}</p>
+            
+            {% if i['request_status'] == 'forward' %}
+            <div class="button-group">
+                <a href="?action=approve&id={{ i['request_id'] }}" class="approve">Approve</a>
+                <a href="?action=reject&id={{ i['request_id'] }}" class="reject">Reject</a>
+            </div>
+            {% elif i['request_status'] == 'approved' %}
+            <p class="approved">Approved</p>
+            {% elif i['request_status'] == 'rejected' %}
+            <p class="rejected">Rejected</p>
+            {% elif i['request_status'] == 'approve' %}
+            <div class="button-group">
+                <a href="/rto_add_certicate?id={{ i['vehicle_id'] }}" class="create-certificate">Create Certificate</a>
+                <a href="/upload_certificate?rid={{ i['request_id'] }}" class="upload-certificate">Upload Certificate</a>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+
+{% include 'footer.html' %}
+
+

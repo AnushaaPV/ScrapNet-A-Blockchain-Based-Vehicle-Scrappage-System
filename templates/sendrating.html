@@ -1,0 +1,113 @@
+{% include 'user_header.html' %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            background-image: url('https://cdn.pixabay.com/photo/2019/11/03/14/02/garage-4598773_1280.jpg'); /* Replace with actual background image */
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            background-color: #7a6b41;
+        
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            border: 1px solid #423e3e;
+            border-radius: 6px;
+            font-size: 14px;
+            resize: none;
+        }
+
+        small {
+            display: block;
+            margin-top: 5px;
+            color: #666;
+            font-size: 12px;
+        }
+
+        input[type="submit"] {
+            width: 50%;
+            padding: 12px;
+            background-color: #203750;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            font-size: 16px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            let review = document.getElementById("rating").value.trim();
+            let wordCount = review.split(/\s+/).length;
+            if (wordCount < 100) {
+                alert("Please provide at least 100 words in your review.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Rate the Scrap Company</h2>
+
+        <form action="" method="post" >
+            <div class="form-group">
+                <label for="rating">Your Rating & Experience:</label>
+                <textarea name="rating" id="rating" placeholder="Write your detailed experience here... (Minimum 100 words)"></textarea>
+                <small>Write at least 100 words about your experience.</small>
+            </div>
+            <input type="submit" name="submit" value="Send">
+        </form>
+    </div>
+
+</body>
+
+</html>
+{% include 'footer.html' %}

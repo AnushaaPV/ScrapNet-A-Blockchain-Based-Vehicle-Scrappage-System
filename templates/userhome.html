@@ -1,0 +1,123 @@
+
+{% include 'user_header.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome user</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        /* Main container for the Hero Section */
+        .main {
+            width: 100%;
+            height: 100vh;
+            background: #c79191; /* Fallback background color */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Background styling */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://cdn.pixabay.com/photo/2019/11/03/14/02/garage-4598773_1280.jpg'); /* Replace with actual background image */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6; /* Slight opacity to make text stand out */
+        }
+
+        /* Container for the text */
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        h1 {
+            font-size: 4em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        /* Fade-in animation for header */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Button styling */
+        .btn {
+            padding: 12px 20px;
+            background-color: #9f2535;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #343638;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section id="hero" class="hero section">
+            <div class="hero-bg"></div>
+            <div class="container">
+                <h1>Sustainable Living Starts Here – ScrapNet at Your Service</h1>
+                <!-- <a href="#" class="btn">Go to Dashboard</a> -->
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
+
+{% include 'footer.html' %}

@@ -1,0 +1,166 @@
+{% include 'public_header.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrap Your Vehicle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #dbd4d4;
+        }
+
+        /* Main container */
+        .main {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hero Section */
+        #hero {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Background styling */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.pixabay.com/photo/2018/01/26/15/53/automotive-shredder-residue-3108985_1280.jpg') no-repeat center center/cover;
+            filter: brightness(1.5); /* Darkens image slightly */
+        }
+
+        /* Overlay gradient */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(179, 169, 169, 0.6), rgba(63, 58, 58, 0.8));
+        }
+
+        /* Content container */
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        p {
+            font-size: 1.3em;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Button Styling */
+        .btn {
+            padding: 15px 35px;
+            background: #374e70;
+            color: white;
+            font-size: 1.3em;
+            font-weight: 500;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0px 4px 15px rgba(255, 94, 87, 0.3);
+        }
+
+        .btn:hover {
+            background: #30598b;
+            box-shadow: 0px 6px 20px rgba(255, 63, 63, 0.5);
+            transform: translateY(-3px);
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+
+            .btn {
+                font-size: 1.1em;
+                padding: 12px 28px;
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <div class="container">
+                <h1>Scrap Your Vehicle Today</h1>
+                <p>Get the best price for your vehicle with our fast and easy scrapping service. We handle everything for you.</p>
+                <a href="/login" class="btn">Join</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- <footer>
+        &copy; 2025 ScrapMyCar | <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a>
+    </footer> -->
+
+</body>
+</html>
+
+
+
+{% include 'footer.html' %}

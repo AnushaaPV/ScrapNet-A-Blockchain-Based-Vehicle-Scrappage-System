@@ -1,0 +1,101 @@
+{% include 'scrap_header.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Pending ScrapRequest</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            background-image: url('https://cdn.pixabay.com/photo/2023/09/08/15/49/ai-generated-8241457_1280.jpg');  /* Replace with actual background image */
+
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        /* Header Styling */
+        h2 {
+            text-align: center;
+            color: #0d4365;
+            margin-bottom: 20px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 90%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #0a476d;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        a {
+            color: #1362ac;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #1664a9;
+        }
+
+        /* Add some space below the table */
+        table {
+            margin-top: 20px;
+        }
+
+        /* Add padding to the body */
+        body {
+            padding: 40px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>View Pending ScrapRequest</h2>
+    
+    <table>
+        <tr>
+            <th>User</th>
+            <th>My Vehicle ID</th>
+            <th>Status</th>
+            <th>Forward Pending Requests</th>
+        </tr>
+        {% for i in data['view'] %}
+        <tr>
+            <td>{{i['f_name']}}</td>
+            <td>{{i['my_vehicle_id']}}</td>
+            <td>{{i['request_status']}}</td>
+            <td><a href="?action=forward&id={{i['request_id']}}">Forward</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% include 'footer.html' %}

@@ -1,0 +1,187 @@
+{% include 'admin_header.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Container for form styling */
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #55b4ef;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #054872;
+            color: white;
+        }
+
+        td input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        td input:focus {
+            border-color: #55b4ef;
+        }
+
+        .form-submit {
+            background-color: #0a5d91;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .form-submit:hover {
+            background-color: #55b4ef;
+        }
+
+        .error {
+            color: rgb(86, 165, 192);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Registration</h2>
+        <form id="registrationForm" action="" method="post">
+            <table>
+                <tr>
+                    <th>Station Name</th>
+                    <td><input type="text" name="Sname" id="Sname" required placeholder="Enter Station Name"></td>
+                </tr>
+                <tr>
+                    <th>Place</th>
+                    <td><input type="text" name="place" id="place" required placeholder="Enter Place"></td>
+                </tr>
+                <tr>
+                    <th>Pin Code</th>
+                    <td><input type="text" name="pin" id="pin" required pattern="^\d{6}$" placeholder="Enter 6-digit Pin Code" maxlength="6"></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><input type="email" name="email" id="email" required placeholder="Enter Email"></td>
+                </tr>
+                <tr>
+                    <th>Phone Number</th>
+                    <td><input type="text" name="phonenumber" id="phonenumber" required pattern="^\d{10}$" placeholder="Enter 10-digit Phone Number" maxlength="10"></td>
+                </tr>
+                <tr>
+                    <th>Username</th>
+                    <td><input type="text" name="username" id="username" required minlength="3" placeholder="Enter Username"></td>
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <td><input type="password" name="password" id="password" required minlength="6" placeholder="Enter Password"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Submit" name="submit" class="form-submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div id="formErrors"></div>
+
+        <h3>Submitted Information</h3>
+        <table>
+            <tr>
+                <th>Station Name</th>
+                <th>Place</th>
+                <th>Pin</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+            </tr>
+            {% for i in data['view'] %}
+            <tr>
+                <td>{{i['station_name']}}</td>
+                <td>{{i['place']}}</td>
+                <td>{{i['pin']}}</td>
+                <td>{{i['email']}}</td>
+                <td>{{i['phone_number']}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script>
+        // Validate form on submission
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            var formErrors = [];
+            
+            // Get the values from inputs
+            var phone = document.getElementById("phonenumber").value;
+            var pin = document.getElementById("pin").value;
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            
+            // Validate phone number (should be 10 digits)
+            if (!/^\d{10}$/.test(phone)) {
+                formErrors.push("Phone number must be 10 digits.");
+            }
+
+            // Validate pin (should be 6 digits)
+            if (!/^\d{6}$/.test(pin)) {
+                formErrors.push("Pin code must be 6 digits.");
+            }
+
+            // Validate username (should be at least 3 characters)
+            if (username.length < 3) {
+                formErrors.push("Username must be at least 3 characters.");
+            }
+
+            // Validate password (should be at least 6 characters)
+            if (password.length < 6) {
+                formErrors.push("Password must be at least 6 characters.");
+            }
+
+            // If there are validation errors, prevent form submission and show errors
+            if (formErrors.length > 0) {
+                event.preventDefault();
+                document.getElementById("formErrors").innerHTML = "<ul class='error'><li>" + formErrors.join("</li><li>") + "</li></ul>";
+            }
+        });
+    </script>
+
+</body>
+</html>
+{% include 'footer.html' %}

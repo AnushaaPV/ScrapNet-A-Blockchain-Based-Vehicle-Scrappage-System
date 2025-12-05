@@ -1,0 +1,89 @@
+{% include 'scrap_header.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrapped Vehicles</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            background-image: url('https://cdn.pixabay.com/photo/2023/09/08/15/49/ai-generated-8241457_1280.jpg');  /* Replace with actual background image */
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header Styling */
+        h2 {
+            color: #052d46;
+            margin-bottom: 20px;
+        }
+
+        /* Card Container Styling */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Individual Card Styling */
+        .card {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 300px;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #104667;
+        }
+
+        .card-content p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+                max-width: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Scrapped Vehicles</h2>
+    <div class="card-container">
+        {% for i in data['view'] %}
+        <div class="card">
+            <div class="card-title">Vehicle Model: {{ i['model'] }}</div>
+            <div class="card-content">
+                <p><strong>Date:</strong> {{ i['date'] }}</p>
+                <p><strong>Register Number:</strong> {{ i['regno'] }}</p>
+                <p><strong>Status:</strong> {{ i['status'] }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+{% include 'footer.html' %}

@@ -1,0 +1,604 @@
+<!-- <div class="container1 mt-3" style="margin-top: 200px; margin-left:400px; margin-right:400px; " >
+    <form action="" method="post" enctype="multipart/form-data">
+      <div class="row jumbotron box8" style="background-color: rgb(218, 206, 209);">
+        <div class="col-sm-12 mx-t3 mb-4">
+          <h2 class="text-center text-info"style="color:black;">UPLOAD CERTIFICATE</h2>
+        </div>
+    </br>
+          <div class="col-sm-6 form-group">
+            <label for="place">Image</label>
+            <input type="file" class="form-control" name="certificate" id="place" placeholder="" required>
+          </div>
+
+        <div class="col-sm-12 form-group mb-0">
+          <button class="btn btn-primary float-right" name="register">upload</button>
+        </div>
+      </div>
+    </form>
+  </div> -->
+
+
+  <div class="control-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-2-4">
+          <div class="slogan">SCARP CERTIFICATE</div>
+          <!-- <label for="config_note">Add Notes:
+            <input type="checkbox" id="config_note" />
+          </label>
+          <label for="config_date">Due Date:
+            <input type="checkbox" id="config_date" />
+          </label> -->
+        </div>
+        <div class="col-4 text-right">
+          <a href="javascript:window.print()">Print</a>
+          
+        </div><!--.col-->
+      </div><!--.row-->
+    </div><!--.container-->
+  </div><!--.control-bar-->
+  
+  <header class="row">
+    <div class="logoholder text-center">
+      <img src="/static/Kerala_motor_vehicle_department_logo.png" width="130px"><!--.logo-->
+    </div><!--.logoholder-->
+  
+  
+    
+  
+  </header>
+  
+  <div class="row section"> 
+    <div class="col-2" style="margin-left: 50px;">
+      <h1 contenteditable>CERTIFICATE</h1>
+    </div><!--.col-->
+
+    <form method="POST" action="/submit">
+      <div class="form-group">
+        <label for="model">Car Model:</label>
+        <input type="text" id="model" name="model" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="chasesno">Chassis No:</label>
+        <input type="text" id="chasesno" name="chasesno" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="regno">Registration No:</label>
+        <input type="text" id="regno" name="regno" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="enginenum">Engine Number:</label>
+        <input type="text" id="enginenum" name="enginenum" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+      
+      <button type="submit">Submit</button>
+    </form>
+    
+    
+    <div class="col-1 text-right details">
+      <!-- <p contenteditable>
+        Date: <input type="text" class="datePicker" /><br>
+      </p> -->
+    </div><!--.col-->
+  
+  </div><!--.row-->
+  <br><br>
+  
+  <div class="invoicelist-body">
+    <table>
+      <thead contenteditable>
+        <th>car model</th>
+        <th>chase no</th>
+        <th>reg no</th>
+        <th>enginenum</th>
+        <th class="daterelated"> Date</th>
+        <!-- <th width="10%">Quantity</th> -->
+      
+        <!-- <th width="10%">Cost</th> -->
+      </thead>
+      <tbody>
+        {%for i in data['view']%}
+        <tr>
+        
+          <td><span>{{i['model']}}</span></td>
+          <td><span>{{i['chasesno']}}</span></td>
+          <td><span>{{i['regno']}}</span></td>
+          <td><span>{{i['enginenum']}}</span></td>
+          <td><span>{{date}}</span></td>
+      
+        
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+    <!-- <a class="control newRow" href="#">+ New Product</a> -->
+  </div><!--.invoice-body-->
+  
+
+  
+  <!-- <div class="note" contenteditable>
+    <h2>Notes:</h2>
+  </div> -->
+  
+  
+  <!-- <div class="col-1 sign" contenteditable>
+    <h3>PLEASE SIGN AND RETURN</h3>
+    <p>I have read and accept the terms and conditions, which can be found at <a href="http://www.alliedbuildings.com/terms/">alliedbuildings.com/terms</a>.</p>
+    <div class="col-1 here">
+      <p>Signature: <span class="signature line"></span></p>
+    </div>
+    <div class="col-1 here">
+      <p>Print Name: <span class="print line"></span>Date: <span class="date line"></span></p>
+    </div>
+  </div> -->
+  
+  
+  <footer class="row">
+    <div class="col-1 text-center">
+      <!-- <p class="thanks" contenteditable><i>Thank you for your business!</i></p> -->
+    </div>
+  </footer>
+
+
+  <style>
+    [contenteditable],
+
+    textarea,
+    select,
+    button {
+      pointer-events: none;
+      user-select: none;
+    }
+   
+html {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #000;
+  background: #ddd;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 6rem auto 0;
+  max-width: 800px;
+  background: white;
+  border: 1px solid #aaa;
+  padding: 2rem;
+  font-family: 'Lato', sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+[contenteditable] {
+  transition: 0.3s;
+}
+[contenteditable]:hover, [contenteditable]:focus,
+input:hover,
+input:focus {
+  background: rgba(63, 130, 215, 0.1);
+  outline: 2px solid #3f82d7;
+  transition: 0.3s;
+}
+
+.group:after, .row:after, .invoicelist-footer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/**
+* Small Grid
+**/
+.row {
+  position: relative;
+  display: block;
+  width: 100%;
+  font-size: 0;
+}
+
+.col, .logoholder, .me, .info, .bank,
+[class*="col-"] {
+  vertical-align: top;
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0 1rem;
+  min-height: 1px;
+}
+
+.col-4 {
+  width: 25%;
+}
+
+.col-3 {
+  width: 33.33%;
+}
+
+.col-2 {
+  width: 50%;
+}
+
+.col-2-4 {
+  width: 75%;
+}
+
+.col-1 {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+a {
+  color: #3f82d7;
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+.control-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #3f82d7;
+  color: white;
+  line-height: 4rem;
+  height: 4rem;
+}
+.control-bar .slogan {
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: inline-block;
+  margin-right: 2rem;
+}
+.control-bar label {
+  margin-right: 1rem;
+}
+.control-bar a {
+  margin: 0;
+  padding: .5em 1em;
+  background: rgba(255, 255, 255, 0.8);
+}
+.control-bar a:hover {
+  background: white;
+}
+.control-bar input {
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  padding: .5rem 0;
+  max-width: 30px;
+  text-align: center;
+}
+.control-bar input:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.hidetax .taxrelated {
+  display: none;
+}
+
+.showtax .notaxrelated {
+  display: none;
+}
+
+.hidedate .daterelated {
+  display: none;
+}
+
+.showdate .notdaterelated {
+  display: none;
+}
+
+/**
+ * HEADER
+ */
+header {
+  margin: 1rem 0 0;
+  padding: 0 0 1rem 0;
+  border-bottom: 3pt solid #3f82d7;
+}
+header p {
+  font-size: .9rem;
+}
+header a {
+  color: #000;
+}
+
+.logo {
+  margin: 0 auto;
+  width: auto;
+  height: auto;
+  border: none;
+  fill: #3f82d7;
+}
+
+.logoholder {
+  width: 10%;
+}
+
+.me {
+  width: 28%;
+  margin-left: 2%;
+}
+
+.info {
+  width: 30%;
+}
+
+.bank {
+  width: 30%;
+}
+
+/**
+ * SECTION
+ */
+.section {
+  margin: 3rem 0 0;
+}
+
+.smallme {
+  display: inline-block;
+/*   text-transform: uppercase; */
+  margin: 0;
+  font-size: 1rem;
+}
+
+.client {
+  margin: 0 0 3rem 0;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 3rem;
+  color: #3f82d7;
+  text-align:right;
+}
+
+.details input {
+  display: inline;
+  margin: 0 1.5rem 0 .5rem;
+  border: none;
+  width: 85px;
+  min-width: 0;
+  background: transparent;
+  text-align: right;
+}
+
+.rate:before,
+.price:before,
+.sum:before,
+.tax:before,
+#total_price:before,
+#total_tax:before {
+  content: '₹';
+}
+
+/**
+ * INVOICELIST BODY
+ */
+.invoicelist-body {
+  margin: 1rem;
+}
+.invoicelist-body table {
+  width: 100%;
+}
+.invoicelist-body thead {
+  text-align: left;
+  border-bottom: 2pt solid #666;
+}
+.invoicelist-body td, .invoicelist-body th {
+  position: relative;
+  padding: 1rem;
+}
+.invoicelist-body th {
+  background:#ccc;
+/*   border-bottom: 1px solid #333; */
+}
+.invoicelist-body tr {
+  background:#f5f5f5;
+}
+.invoicelist-body tr:nth-child(even) {
+  background: #ccc;
+}
+.invoicelist-body tr:hover .removeRow {
+  display: block;
+}
+.invoicelist-body input {
+  display: inline;
+  margin: 0;
+  border: none;
+  width: 80%;
+  min-width: 0;
+  background: transparent;
+  text-align: left;
+}
+.invoicelist-body .control {
+  display: inline-block;
+  color: white;
+  background: #3f82d7;
+  padding: 8px 9px 5px 7px;
+  font-size: 1rem;
+/*   text-transform: uppercase; */
+  cursor: pointer;
+  transition:.4s;
+}
+.invoicelist-body .control:hover {
+  background: #333;
+}
+.invoicelist-body .newRow {
+  margin: 0 0 0 2px;
+  float: left;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.invoicelist-body .removeRow {
+  display: none;
+  position: absolute;
+  top: .1rem;
+  bottom: .1rem;
+  left: -1.3rem;
+  font-size: .7rem;
+  border-radius: 3px 0 0 3px;
+  padding: .5rem;
+}
+
+/**
+ * INVOICE LIST FOOTER
+ */
+.invoicelist-footer {
+  margin: 1rem;
+}
+.invoicelist-footer table {
+  float: right;
+  width: 25%;
+}
+.invoicelist-footer table td {
+  padding: 1rem 2rem 0 1rem;
+  text-align: right;
+}
+.invoicelist-footer table tr:nth-child(2) td {
+  padding-top: 0;
+}
+.invoicelist-footer table #total_price {
+  font-size: 2rem;
+  color: #3f82d7;
+}
+
+/**
+ * NOTE
+ */
+.note {
+  margin: 1rem;
+}
+.hidenote .note {
+  display: none;
+}
+.note h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.sign {
+  text-align: center;
+}
+
+.here {
+  text-align: left;
+  font-weight: 800;
+  font-size: 15px;
+  margin: 15px 50px 0;
+}
+
+.line {
+  border-bottom: 1px solid #333 !important;
+  display: inline-block;
+}
+
+.signature.line {
+  width: 500px;
+}
+
+.print.line {
+  width: 300px;
+  margin-right:25px;
+}
+
+.date.line {
+  width: 125px;
+}
+
+/**
+ * FOOTER
+ */
+footer {
+  display: block;
+  margin: 1rem 0;
+  padding: 1rem 0 0;
+}
+footer p {
+  font-size: 1.5rem;
+  text-transform: italic;
+  Font-weight: 100;
+}
+
+/**
+ * PRINT STYLE
+ */
+@media print {
+  html {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  body {
+    width: 100%;
+    border: none;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .control,
+  .control-bar {
+    display: none !important;
+  }
+
+  [contenteditable]:hover, [contenteditable]:focus {
+    outline: none;
+  }
+}
+
+  </style>
+
+<script>
+  // Wait for the DOM to be fully loaded
+document.addEventListener("DOMContentLoaded", function() {
+  // Get all the input fields for costs
+  var costInputs = document.querySelectorAll(".taxrelated");
+
+  // Initialize total price to 0
+  var totalPrice = 0;
+
+  // Loop through each input field and add its value to totalPrice
+  costInputs.forEach(function(input) {
+    // Get the value of the input field and parse it as a float
+    var cost = parseFloat(input.textContent);
+    
+    // Add the cost to totalPrice
+    totalPrice += cost;
+  });
+
+  // Set the total price in the total_price element
+  document.getElementById("total_price").textContent = totalPrice;
+});
+
+</script>
+  

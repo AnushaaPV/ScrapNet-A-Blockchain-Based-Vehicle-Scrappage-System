@@ -1,0 +1,136 @@
+{% include 'RTO_header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Management</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            background-image: url('https://cdn.pixabay.com/photo/2019/11/06/07/06/auto-4605385_1280.jpg'); /* Replace with actual background image */
+
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #093652;
+            margin-top: 50px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            margin: 50px auto;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th {
+            text-align: left;
+            padding-right: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #073d5e;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #02273e;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            form {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Vehicle Management</h2>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>Model</th>
+                <td><input type="text" name="model" placeholder="Enter vehicle model"></td>
+            </tr>
+            <tr>
+                <th>Enginenum</th>
+                <td><input type="text" name="enginenum" placeholder="Enter engine number"></td>
+            </tr>
+            <tr>
+                <th>Chasis Number</th>
+                <td><input type="text" name="chasesno" placeholder="Enter chassis number"></td>
+            </tr>
+            <tr>
+                <th>Seat Number</th>
+                <td><input type="text" name="seater" placeholder="Enter seat number"></td>
+            </tr>
+            <tr>
+                <th>Register Number</th>
+                <td><input type="text" name="regno" placeholder="Enter register number"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Submit" name="submit"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+<h3><center>Submitted Information</center></h3><br><br>
+        <table>
+            <tr>
+                <th>Vehicle ID</th>
+                <th>Register Number</th>
+                <th>Model </th>
+                <th>Enginenum</th>
+                <th>Chassis Number</th>
+                <th>Seat Number</th>
+            </tr>
+            {% for i in data['view'] %}
+            <tr>
+                <td>{{i['vehicle_id']}}</td>
+                <td>{{i['regno']}}</td>
+                <td>{{i['model']}}</td>
+                <td>{{i['enginenum']}}</td>
+                <td>{{i['chasesno']}}</td>
+                <td>{{i['seater']}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+{% include 'footer.html' %}
+
+

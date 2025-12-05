@@ -1,0 +1,144 @@
+{% include 'admin_header.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrap Company</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Container for content */
+        .container {
+            width: 90%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #3383aa;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #0d416c;
+            color: white;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        /* Link styles */
+        a {
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        /* Approve button */
+        .approve {
+            background-color: #28a745;
+        }
+
+        /* Reject button */
+        .reject {
+            background-color: #dc3545;
+        }
+
+        /* Status column styles */
+        .approved {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .rejected {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Scrap Company</h2>
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Place</th>
+                <th>Post</th>
+                <th>Pin</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Licenses</th>
+                <th>Status</th>
+            </tr>
+
+            {% for i in data['view'] %}
+            <tr>
+                <td>{{i['f_name']}}</td>
+                <td>{{i['l_name']}}</td>
+                <td>{{i['place']}}</td>
+                <td>{{i['post']}}</td>
+                <td>{{i['pin']}}</td>
+                <td>{{i['phone']}}</td>
+                <td>{{i['email']}}</td>
+                <td>{{i['licences']}}</td>
+                
+                {% if i['usertype'] == 'pending' %}
+                <td>
+                    <a href="?action=approve&id={{i['login_id']}}" class="approve">Approve</a>
+                    <a href="?action=reject&id={{i['login_id']}}" class="reject">Reject</a>
+                </td>
+                {% elif i['usertype'] == 'scrap' %}
+                <td class="approved">Approved</td>
+                {% elif i['usertype'] == 'rejected' %}
+                <td class="rejected">Rejected</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            
+        </table>
+    </div>
+
+</body>
+</html>
+{% include 'footer.html' %}

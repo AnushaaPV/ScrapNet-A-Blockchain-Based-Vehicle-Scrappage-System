@@ -1,0 +1,133 @@
+{% include 'police_header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suspicious Activity Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://cdn.pixabay.com/photo/2017/08/27/23/16/wreck-2687934_1280.jpg');  /* Replace with actual background image */
+
+            background-size: cover;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #fff;
+            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .container {
+            width: 50%;
+            max-width: 800px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th,
+        table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f2f5f7;
+            color: rgb(21, 20, 20);
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        input[type="text"] {
+            width: 700;
+            padding: 8px;
+            border: 1px solid #ffffff;
+            border-radius: 1x;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #dadee2;
+        }
+
+        th[colspan="2"] {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Suspicious Activity Page</h1>
+    <div class="container">
+        <form action="" method="post">
+            <table>
+                <tr>
+                    <th>TITLE</th>
+                    <td><input type="text" name="title"></td>
+                </tr>
+                <tr>
+                    <th>DESCRIPTION</th>
+                    <td><input type="text" name="description"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <input type="submit" name="submit" value="Send">
+                    </th>
+                </tr>
+            </table>
+        </form>
+
+        <!-- <table>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date</th>
+            </tr>
+            {% for i in data['view'] %}
+            <tr>
+                <td>{{ i['title'] }}</td>
+                <td>{{ i['description'] }}</td>
+                <td>{{ i['date'] }}</td>
+            </tr>
+            {% endfor %}
+        </table> -->
+    </div>
+</body>
+</html>
+
+{% include 'footer.html' %}

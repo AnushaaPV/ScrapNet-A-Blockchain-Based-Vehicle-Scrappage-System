@@ -1,0 +1,162 @@
+
+{% include 'user_header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            background-image: url('https://cdn.pixabay.com/photo/2019/11/03/14/02/garage-4598773_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #27344f;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        form {
+            width: 50%;
+            margin: 20px auto;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(5px);
+        }
+
+        form table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        form th,
+        form td {
+            padding: 14px;
+            text-align: left;
+        }
+
+        form th {
+            width: 30%;
+            color: #555;
+            font-weight: 600;
+        }
+
+        form td input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        form th input[type="submit"] {
+            background: linear-gradient(45deg, #4777a9, #3a6a78);
+            color: rgb(220, 213, 213);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s ease-in-out;
+        }
+
+        form th input[type="submit"]:hover {
+            background: linear-gradient(45deg, #bfc2c5, #d7e2e8);
+        }
+
+        table {
+            width: 80%;
+            margin: 40px auto;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        table th,
+        table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background: linear-gradient(45deg, #18497d, #0e4e5f);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        table td {
+            color: #333;
+            font-size: 14px;
+        }
+
+        table tr:nth-child(even) {
+            background: #f1faff;
+        }
+
+        table tr:hover {
+            background: #d6eaff;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Complaint Page</h1>
+
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>COMPLAINT</th>
+                <td><input type="text" name="Complaint" placeholder="Enter your complaint"></td>
+            </tr>
+            <tr>
+                <th colspan="2" style="text-align: center;">
+                    <input type="submit" name="submit" value="Send">
+                </th>
+            </tr>
+        </table>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Complaint</th>
+                <th>Reply</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data['view'] %}
+            <tr>
+                <td>{{ i['complaint'] }}</td>
+                <td>{{ i['reply'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
+
+
+{% include 'footer.html' %}
+

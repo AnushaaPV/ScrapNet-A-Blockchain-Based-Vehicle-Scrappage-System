@@ -1,0 +1,147 @@
+
+{% include 'user_header.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicles</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            background-image: url('https://cdn.pixabay.com/photo/2019/11/03/14/02/garage-4598773_1280.jpg');
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Container for the page content */
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #074165;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #0e3852;
+            color: white;
+        }
+
+        td input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        td input:focus {
+            border-color: #083049;
+        }
+
+        .form-submit {
+            background-color: #2d6080;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-submit:hover {
+            background-color: #083048;
+        }
+
+        .reply-link {
+            background-color: #094d78;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .reply-link:hover {
+            background-color: #104260;
+          
+        }
+
+        .no-complaints {
+            text-align: center;
+            font-size: 1.2em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- <h2>View  vehicle</h2> -->
+<!-- 
+        {% if data['Add to my vehicle'] %}
+    
+        <form action="" method="post">
+            <table>
+                <tr>
+                    <th>Register Number</th>
+                    <td><input type="text"  name="regno" ></td>
+                </tr>
+                
+                <tr>
+                    <th>Add to my vehicle</th>
+                    <td><input type="submit" name="Add to my vehicle" ></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" name="submit" value="Submit Reply" class="form-submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        {% else %} -->
+        <!-- If no reply exists, display the list of complaints -->
+        <table border="1">
+            <tr>
+                <th>Vehicle ID</th>
+                <th>Model</th>
+                <th>Chasis Number</th>
+                <th>Register Number</th>
+        
+            </tr>
+            {% for i in data['view'] %}
+            <tr>
+                <td>{{i['vehicle_id']}}</td>
+                <td>{{i['model']}}</td>
+                <td>{{i['chasesno']}}</td>
+                <td>{{i['regno']}}</td>           
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+    
+
+    </div>
+
+</body>
+</html>
+{% include 'footer.html' %}

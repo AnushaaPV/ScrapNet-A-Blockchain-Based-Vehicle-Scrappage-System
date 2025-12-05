@@ -1,0 +1,185 @@
+{% include 'scrap_header.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* General Body Styling */
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    background-image: url('https://cdn.pixabay.com/photo/2023/09/08/15/49/ai-generated-8241457_1280.jpg');  /* Replace with actual background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 20px;
+    }
+
+        /* Header Styling */
+        h2 {
+            text-align: center;
+            color: #073a5a;
+        }
+
+        /* Table Styling */
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #1d4761;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e9e9e9;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        a {
+            color: #0b4366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Form Styling */
+        form {
+            width: 60%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        form table {
+            width: 100%;
+        }
+
+        form th {
+            text-align: left;
+            padding: 10px;
+            font-weight: normal;
+        }
+
+        form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        form input[type="submit"] {
+            background-color: #214178;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Profile Information</h2>
+    
+    {% if data['up'] %}
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>First Name</th>
+                <td><input type="text" name="fname" value="{{data['up'][0]['f_name']}}"></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td><input type="text" name="lname" value="{{data['up'][0]['l_name']}}"></td>
+            </tr>
+            <tr>
+                <th>Place</th>
+                <td><input type="text" name="place" value="{{data['up'][0]['place']}}"></td>
+            </tr>
+            <tr>
+                <th>Post</th>
+                <td><input type="text" name="post" value="{{data['up'][0]['post']}}"></td>
+            </tr>
+            <tr>
+                <th>PinCode</th>
+                <td><input type="text" name="pin" value="{{data['up'][0]['pin']}}"></td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td><input type="text" name="phonenumber" value="{{data['up'][0]['phone']}}"></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="text" name="email" value="{{data['up'][0]['email']}}"></td>
+            </tr>
+            <tr>
+                <th>Licences</th>
+                <td><input type="text" name="licences" value="{{data['up'][0]['licences']}}"></td>
+            </tr>
+            <tr>
+              <td colspan="2"><input type="submit" name="submit" value="Submit"class="form-submit"></td>
+            </tr>
+        </table>
+    </form>
+    {% else %}
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Place</th>
+            <th>Post</th>
+            <th>Pincode</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Licenses</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data['view'] %}
+        <tr>
+            <td>{{i['f_name']}}</td>
+            <td>{{i['l_name']}}</td>
+            <td>{{i['place']}}</td>
+            <td>{{i['post']}}</td>
+            <td>{{i['pin']}}</td>
+            <td>{{i['phone']}}</td>
+            <td>{{i['email']}}</td>
+            <td>{{i['licences']}}</td>
+            <td><a href="?action=update">Edit profile</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html> 
+{% include 'footer.html' %}

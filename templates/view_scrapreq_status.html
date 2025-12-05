@@ -1,0 +1,125 @@
+{% include 'user_header.html' %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrap Request Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            background-image: url('https://cdn.pixabay.com/photo/2019/11/03/14/02/garage-4598773_1280.jpg'); /* Replace with actual background image */
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 26px;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            width: 320px;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            color: #007BFF;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .status {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .pending {
+            background-color: #FFC107;
+            color: #fff;
+        }
+
+        .approved {
+            background-color: #28A745;
+            color: #fff;
+        }
+
+        .rejected {
+            background-color: #DC3545;
+            color: #fff;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2> ScrapRequest Status</h2>
+
+    <div class="container">
+        {% for i in data['view'] %}
+        <div class="card">
+            <h3>Vehicle Reg. No: {{i['regno']}}</h3>
+            <p><strong>Date:</strong> {{i['date']}}</p>
+            <p><strong>Status:</strong> 
+                <span class="status {% if i['status'] == 'Pending' %}pending{% elif i['status'] == 'Approved' %}approved{% else %}rejected{% endif %}">
+                    {{i['requeststatus']}}
+                </span>
+            </p>
+            <a href="/view_usercertifcate?id={{i['request_id']}}" class="btn btn-secondary">View Certificate</a>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>
+{% include 'footer.html' %}

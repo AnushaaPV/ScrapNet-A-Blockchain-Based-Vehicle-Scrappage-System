@@ -1,0 +1,108 @@
+{% include 'user_header.html' %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrap Company</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #16163d;
+            background-image: url('https://cdn.pixabay.com/photo/2019/11/03/14/02/garage-4598773_1280.jpg'); /* Replace with actual background image */
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            width: 320px;
+            background: #423c3c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(45, 29, 29, 0.1);
+            text-align: left;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: #154b89;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .card p {
+            margin: 5px 0;
+            color: #31455a;
+            font-size: 14px;
+        }
+
+        .card-actions {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #007BFF;
+            color: rgb(34, 74, 121);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Scrap Company</h2>
+
+    <div class="container">
+        {% for i in data['view'] %}
+        <div class="card">
+            <h3>{{ i['f_name'] }} {{ i['l_name'] }}</h3>
+            <p><strong>Place:</strong> {{ i['place'] }}</p>
+            <p><strong>Post:</strong> {{ i['post'] }}</p>
+            <p><strong>Pincode:</strong> {{ i['pin'] }}</p>
+            <p><strong>Phone:</strong> {{ i['phone'] }}</p>
+            <p><strong>Email:</strong> {{ i['email'] }}</p>
+            <p><strong>Licenses:</strong> {{ i['licences'] }}</p>
+            <div class="card-actions">
+                <a href="/sendrating?id={{ i['scrapper_id'] }}" class="btn">Send Rating</a>
+                <a href="/sendrequest?id={{ i['scrapper_id'] }}" class="btn">Send Request</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% include 'footer.html' %}
+
+</body>
+
+</html>

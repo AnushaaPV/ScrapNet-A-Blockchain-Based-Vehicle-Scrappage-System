@@ -1,0 +1,217 @@
+{% include 'user_header.html' %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Price Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #14273c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #122942;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Add Price Info</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Car Name</label>
+                    <input type="text" name="carname" placeholder="Enter your car name" required>
+                </div>
+                <div class="form-group">
+                    <label>Registration Year</label>
+                    <input type="text" name="regyear" placeholder="Enter registration year" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Seater Capacity</label>
+                    <input type="text" name="seater" placeholder="Enter seater capacity" required>
+                </div>
+                <div class="form-group">
+                    <label>Insurance Validity</label>
+                    <input type="text" name="insurance" placeholder="Enter insurance validity" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Fuel Type</label>
+                    <input type="text" name="fuel" placeholder="Enter fuel type" required>
+                </div>
+                <div class="form-group">
+                    <label>KM Driven</label>
+                    <input type="text" name="km" placeholder="Enter km driven" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Ownership</label>
+                    <input type="text" name="owner" placeholder="Enter ownership" required>
+                </div>
+                <div class="form-group">
+                    <label>Transmission</label>
+                    <input type="text" name="transmission" placeholder="Enter transmission type" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Manufacture Year</label>
+                    <input type="text" name="manufacture" placeholder="Enter manufacture year" required>
+                </div>
+                <div class="form-group">
+                    <label>Mileage</label>
+                    <input type="text" name="millege" placeholder="Enter mileage" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Engine CC</label>
+                    <input type="text" name="engine" placeholder="Enter engine CC" required>
+                </div>
+                <div class="form-group">
+                    <label>Max Power</label>
+                    <input type="text" name="maxpower" placeholder="Enter max power" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Torque</label>
+                    <input type="text" name="torque" placeholder="Enter torque" required>
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="text" name="price" placeholder="Enter price" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Upload Image</label>
+                <input type="file" name="image" required>
+            </div>
+
+            <button type="submit" name="register">Submit</button>
+        </form>
+    </div>
+
+
+<center>
+    
+    <h2>Scrap Items</h2>
+    
+    <table>
+        </thead>
+            <tr>
+                <th>SL. No</th>
+                <th>Scrap Value</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i in data['view'] %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ i['scrap_value'] }}</td>
+            <td>
+                <img src="{{ i['image'] }}" alt="Scrap Image" height="200px" width="200px">
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>    
+</center>
+</body>
+</html>
+{% include 'footer.html' %}
+
+
+
